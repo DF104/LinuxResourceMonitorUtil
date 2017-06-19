@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+<head>  
+    <title>历史记录查询</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="lib/datatables/css/dataTables.bootstrap.min.css"/>		
+	<link rel="stylesheet" href="css/index.css"/>
+	<style type="text/css">
+		body {
+			padding:10px;
+		}
+		.container{
+			width: 100%;
+			padding: 0px;
+		}
+		.row {
+			margin-top:10px; 
+		}
+		
+		p {
+			margin-top: 10px;
+		}					
+	</style>
+</head>  
+<body>	
+	<div class="container">
+		<div class="panel panel-danger">			
+        <div class="panel-heading">
+        	<strong>注意：</strong>目前无法执行交互式命令。请不要执行输出过长或者耗时较长<span class="text-warning">(比如cat/more大文件、从大文件中grep内容、执行启动脚本等)</span>以及危险的<span class="text-warning">(kill、quit、logout、rm等命令)</span>的命令,
+			<strong>否则将会导致页面卡死、监控用web服务器出现异常等问题,请一定要注意。</strong>
+        </div>
+        <div class="panel-body">   
+        	<div class="row">  
+        		<div class="col-sm-12">
+	        		<select class="form-control" id="select-server">
+					</select>
+				</div>
+        	</div>  	
+        	<div class="row">
+        		<div class="col-sm-8">
+            		<input type="text" class="form-control" placeholder="执行命令" id="command">
+        		</div>
+        		<div class="col-sm-2">
+            		<input type="button" class="form-control btn btn-primary" value="执行" id="exec-command">
+        		</div>
+        		<div class="col-sm-2">
+        			<input type="button" class="form-control btn btn-danger" value="中断执行" id="stop-exec">
+        		</div>
+        	</div>   
+        	<div class="row">   
+        		<div class="col-sm-12"> 	
+        			<textarea id="return-text" class="form-control" cols="30" rows="10" style="height: 240px;"></textarea>     	
+        		</div>
+        	</div>
+        	<p class="text-danger lead" id="tip"></p>       	
+        </div>
+    </div>		
+	</div>	
+<script src="js/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/layer/layer.js"></script>
+<script src="lib/datatables/js/jquery.dataTables.min.js"></script>
+<script src="lib/datatables/js/dataTables.bootstrap.min.js"></script>
+<script src="js/execCommand.js"></script>		 	 
+</body>
+</html>

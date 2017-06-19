@@ -1,0 +1,98 @@
+body {
+	padding:30px;
+}
+
+.container{
+	width: 100%;
+	padding: 25px;
+}
+
+#echarts {
+	width:100%;
+	overflow:hidden;
+	margin:0 auto;
+	padding:20px 10px 10px 20px;
+	margin-top:35px;
+}
+
+#echarts > .row > div {
+	height: 370px;
+}
+
+#saveSeverHtml{
+	display:none;
+}
+
+.save-form {
+	margin: 15px;
+	width: 460px;
+	
+}
+
+.info-edit-form {
+	margin: 10px;
+	width: 600px;
+}
+
+.table>tbody>tr>td {
+	text-align: center;
+	vertical-align:middle; 
+	white-space:nowrap;  
+}
+.other-div{
+	height: 370px;
+}
+
+th {
+	text-align: center;
+	white-space:nowrap;
+}
+
+#batchSave {
+	display: none;
+}
+
+.open-echarts {
+	margin: 20px;
+	height: 370px;
+	width: 700px;
+}
+
+.show-echarts-view{
+	cursor:pointer;
+}
+
+.dynamic-data{
+	cursor:pointer;
+}
+
+.current-tag {
+	cursor:pointer;
+}
+
+.btn-group > .dropdown-menu > li {
+	padding:0 10px;
+	margin-bottom: 5px;
+}
+
+.btn-group > .dropdown-menu > li > input {
+	margin-right: 12px;
+}
+
+.tool-bar {
+	width: 100%;
+	overflow:hidden;
+	margin-bottom: 14px;
+	padding: 6px;
+	background-color: #F5FAFE;	
+}
+
+.td-left {
+	text-align: left;
+}
+
+.show-content {
+	margin: 8px;
+	padding:4px;
+	width: 97%;
+}

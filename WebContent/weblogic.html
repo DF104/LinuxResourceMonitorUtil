@@ -1,0 +1,128 @@
+<!DOCTYPE>
+<html>
+	<head>  
+	    <title>Weblogic实时监控</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="lib/datatables/css/dataTables.bootstrap.min.css"/>		
+		<link rel="stylesheet" href="css/index.css"/>
+	</head>  
+	<body>	
+	<div class="container">	
+	<button type="button" class="btn btn-success">添加weblogic信息</button>&nbsp;&nbsp;<button type="button" class="btn btn-danger">清空数据</button>
+	&nbsp;&nbsp;<button type="button" class="btn btn-info">历史记录</button>&nbsp;&nbsp;<button type="button" class="btn btn-danger">重新计时</button>&nbsp;
+	<div class="btn-group">
+        <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" type="button">
+           	指定显示内容<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+        	<li><input type="checkbox" data-column="1" class="toggle-vis"/>HOST</li>
+        	<li><input type="checkbox" data-column="2" class="toggle-vis"/>备注</li>
+            <li><input type="checkbox" data-column="3" class="toggle-vis"/>用户名</li>
+            <li><input type="checkbox" data-column="4" class="toggle-vis"/>节点名</li>
+            <li><input type="checkbox" data-column="5" class="toggle-vis"/>状态</li>
+            <li><input type="checkbox" data-column="6" class="toggle-vis"/>健康度</li>
+            <li><input type="checkbox" data-column="7" class="toggle-vis"/>启动时间</li>
+            <li><input type="checkbox" data-column="8" class="toggle-vis"/>JVM堆最大值</li>
+            <li><input type="checkbox" data-column="9" class="toggle-vis"/>JVM堆当前使用</li>
+            <li><input type="checkbox" data-column="10" class="toggle-vis"/>JVM堆当前空闲</li>
+            <li><input type="checkbox" data-column="11" class="toggle-vis"/>JVM堆空闲百分比</li>
+            <li><input type="checkbox" data-column="12" class="toggle-vis"/>活动线程总数</li>
+            <li><input type="checkbox" data-column="13" class="toggle-vis"/>暂挂用户数</li>
+            <li><input type="checkbox" data-column="14" class="toggle-vis"/>空闲线程数</li>
+            <li><input type="checkbox" data-column="15" class="toggle-vis"/>连接状态</li>
+            <li><input type="checkbox" data-column="16" class="toggle-vis"/>操作</li>
+        </ul>
+    </div>
+    
+	<br>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+   			<thead>
+  		 		<tr>
+			      <th>#</th>
+			      <th>HOST</th>
+			      <th>备注</th>
+			      <th>用户名</th>
+			      <th>节点名</th>
+			      <th>状态</th>
+			      <th>健康度</th>
+			      <th>启动时间</th>
+			      <th>JVM堆最大值</th>
+			      <th>JVM堆当前使用</th>
+			      <th>JVM堆当前空闲</th>
+			      <th>JVM堆空闲百分比</th>
+			      <th>活动线程总数</th>
+			      <th>暂挂用户数</th>
+			      <th>空闲线程数</th>			      
+			      <th>连接状态</th>				      	      
+			      <th>操作</th>
+   				</tr>
+   			</thead>
+   			<tbody>	  
+   			</tbody>
+		</table>
+	</div>	
+	<div id="saveSeverHtml">
+		<form class="form-horizontal save-form">
+			<div id="singleSave">
+	            <div class="form-group">
+	                <label for="username" class="col-sm-3 control-label">主机IP</label>
+	                <div class="col-sm-9">
+	                    <input type="text" class="form-control" id="host" name="host" placeholder="不要忘记加上端口号"/>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label for="username" class="col-sm-3 control-label">登录用户名</label>
+	                <div class="col-sm-9">
+	                    <input type="text" name="username" id="username" class="form-control"/>
+	                </div>
+	            </div>
+				<div class="form-group">
+	                <label for="password" class="col-sm-3 control-label">登录密码</label>
+	                <div class="col-sm-9">
+	                    <input type="text" name="password" id="password" class="form-control"/>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label for="mark" class="col-sm-3 control-label">备注</label>
+	                <div class="col-sm-9">
+	                    <input type="text" name="mark" id="mark" class="form-control" placeholder="如果通过端口转发监控，请填写备注"/>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <div class="col-sm-offset-3 col-sm-9">
+	                    <button type="button" class="btn btn-danger" onclick="saveServer();">保存信息</button>&nbsp;<button onclick="layer.closeAll('page');" type="button" class="btn btn-default">取消</button>
+	                    &nbsp;<button type="button" class="btn btn-primary" onclick="batchSave();">批量添加</button>
+	                </div>
+	            </div>
+	    	</div>
+	    	<div id="batchSave">
+	    		<div class="form-group">
+	                <label for="password" class="col-sm-3 control-label">主机列表：</label>
+	                <div class="col-sm-9">
+	                    <textarea id="serverList" class="form-control" cols="30" rows="10" style="height:140px;" 
+	                    	placeholder="主机ip:port,登录名,密码[,备注]"></textarea>
+	                </div>
+	            </div>
+	    		<div class="form-group">	    			
+	                <div class="col-sm-offset-3 col-sm-9">
+	                    <button type="button" class="btn btn-danger" onclick="saveServer();">保存信息</button>&nbsp;<button onclick="layer.closeAll('page');" type="button" class="btn btn-default">取消</button>
+	                    &nbsp;<button type="button" class="btn btn-primary" onclick="singleSave();">单条添加</button>
+	                </div>
+	            </div>
+	    	</div>
+	    </form>
+	</div>
+</div>	
+<input type="hidden" id="changeFlag" value="false"/>
+<script src="js/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/layer/layer.js"></script>
+<script src="lib/Echarts/echarts.min.js"></script>
+<script src="lib/Echarts/shine.js"></script>
+<script src="lib/datatables/js/jquery.dataTables.min.js"></script>
+<script src="lib/datatables/js/dataTables.bootstrap.min.js"></script>
+<script src="js/weblogic.js"></script>		 	 
+</body>
+</html>

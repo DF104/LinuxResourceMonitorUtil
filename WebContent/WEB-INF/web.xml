@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>LinuxRealTimeResource</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <listener>
+     <listener-class>listener.InitWebListener</listener-class>
+   </listener>  
+  
+  <servlet>
+  	<servlet-name>getLinuxInfo</servlet-name>
+  	<servlet-class>servlet.InfoServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>getLinuxInfo</servlet-name>
+  	<url-pattern>/linux/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>getWeblogicInfo</servlet-name>
+  	<servlet-class>servlet.WeblogicServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>getWeblogicInfo</servlet-name>
+  	<url-pattern>/weblogic/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>commonInfo</servlet-name>
+  	<servlet-class>servlet.CommonInfoServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>commonInfo</servlet-name>
+  	<url-pattern>/commonInfo/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>uploadFile</servlet-name>
+  	<servlet-class>servlet.UploadServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>uploadFile</servlet-name>
+  	<url-pattern>/upload/*</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

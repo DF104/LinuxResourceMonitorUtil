@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+	<head>  
+	    <title>历史记录查询</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="lib/datatables/css/dataTables.bootstrap.min.css"/>		
+		<link rel="stylesheet" href="css/index.css"/>
+		<style type="text/css">
+			body {
+				padding:25px;
+			}			
+		</style>
+	</head>  
+	<body>	
+	<div class="container">	
+	<div class="tool-bar">
+		<button type="button" class="btn btn-success">批量启用</button>
+	</div>
+		<div>
+		<table class="table table-bordered table-hover">
+   			<thead>
+  		 		<tr>
+  		 		  <th><input type="checkbox" class="checkbox td-left"></th>
+			      <th>#</th>
+			      <th>HOST</th>
+			      <th>端口</th>
+			      <th>用户名</th>
+			      <th>密码</th>
+			      <th>备注</th>
+			      <th>最后一次使用</th>			      				      	      
+			      <th>操作</th>
+   				</tr>
+   			</thead>
+   			<tbody>	  
+   			</tbody>
+		</table>
+		</div>	
+		</div>	
+<script src="js/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/layer/layer.js"></script>
+<script src="lib/datatables/js/jquery.dataTables.min.js"></script>
+<script src="lib/datatables/js/dataTables.bootstrap.min.js"></script>
+<script src="js/historyServer.js"></script>		 	 
+</body>
+</html>
